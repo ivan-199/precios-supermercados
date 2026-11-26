@@ -9,6 +9,7 @@ import preciossupermercados.persistencia.ConexionBD;
 import preciossupermercados.modelo.Producto;
 import preciossupermercados.modelo.ProductoAlimentario;
 import preciossupermercados.modelo.ProductoLimpieza;
+import preciossupermercados.modelo.Supermercado;
 
 /**
  *
@@ -81,6 +82,15 @@ public class PreciosSupermercados {
         System.out.println(arroz.toLineaExportar());
         System.out.println(detergente.toLineaExportar());
         System.out.println(huevos.toLineaExportar());
+        
+        //PRUEBA DE SUPERMERCADOS
+        System.out.println("\nPRUEBA DE SUPERMECADOS");
+        
+        Supermercado mercadona = new Supermercado("Mercadona", "Caceres", "Centro");
+        Supermercado lidl = new Supermercado("Lidl", "Caceres", "Norte");
+        
+        System.out.println(mercadona);
+        System.out.println(lidl);
     }
   
 }

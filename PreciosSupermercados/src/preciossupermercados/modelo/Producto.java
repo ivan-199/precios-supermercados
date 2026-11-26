@@ -17,17 +17,16 @@ public abstract class Producto implements Exportable {
     private String categoria;
     private double cantidad;
     private String unidad;
-    
+
     //CONSTRUCTOR PARA LOS ATRIBUTOS DEL PRODUCTO
-    
-   public Producto (String nombre, String marca, String categoria, double cantidad, String unidad) {
-       
-       this.setNombre(nombre);
-       this.setMarca(marca);
-       this.setCategoria(categoria);
-       this.setCantidad(cantidad);
-       this.setUnidad(unidad);
-   }
+    public Producto(String nombre, String marca, String categoria, double cantidad, String unidad) {
+
+        this.setNombre(nombre);
+        this.setMarca(marca);
+        this.setCategoria(categoria);
+        this.setCantidad(cantidad);
+        this.setUnidad(unidad);
+    }
 
     public int getId() {
         return id;
@@ -42,13 +41,16 @@ public abstract class Producto implements Exportable {
     }
 
     public void setNombre(String nombre) {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nombre debe ser Obligatorio");
+        }
         this.nombre = nombre;
     }
 
-    public abstract String getTipo(); 
-        
+    public abstract String getTipo();
+
     public abstract String getUnidadReferencia();
-    
+
     public abstract double getPrecioUnitario(double importe);
 
     public String getMarca() {
@@ -56,7 +58,11 @@ public abstract class Producto implements Exportable {
     }
 
     public void setMarca(String marca) {
+        if (marca == null || marca.trim().isEmpty()) {
+            throw new IllegalArgumentException("Marca debe ser Obligatorio");
+        }
         this.marca = marca;
+
     }
 
     public String getCategoria() {
@@ -68,12 +74,12 @@ public abstract class Producto implements Exportable {
     }
 
     public double getCantidad() {
-        
+
         return cantidad;
     }
 
     public void setCantidad(double cantidad) {
-        if(cantidad <= 0){
+        if (cantidad <= 0) {
             throw new IllegalArgumentException("La cantidad debe ser mayor a 0");
         }
         this.cantidad = cantidad;
@@ -86,17 +92,15 @@ public abstract class Producto implements Exportable {
     public void setUnidad(String unidad) {
         this.unidad = unidad;
     }
-    
-    
-   public String datosComunes(){
-       return id + ";" + getTipo() + ";" + nombre + ";" + marca + ";" + categoria + ";" + cantidad + ";" + unidad;
-       
-   }
-   @Override
-   public String toString (){
-       return id + ", Nombre: " + nombre + ", Marca:  " + marca + ", Categoria:  " + categoria + ", Cantidad: " + cantidad + ", Unidad:  " + unidad + ", " + getTipo();
-   }
-   
-          
-           
+
+    public String datosComunes() {
+        return id + ";" + getTipo() + ";" + nombre + ";" + marca + ";" + categoria + ";" + cantidad + ";" + unidad;
+
+    }
+
+    @Override
+    public String toString() {
+        return id + ", Nombre: " + nombre + ", Marca:  " + marca + ", Categoria:  " + categoria + ", Cantidad: " + cantidad + ", Unidad:  " + unidad + ", " + getTipo();
+    }
+
 }
